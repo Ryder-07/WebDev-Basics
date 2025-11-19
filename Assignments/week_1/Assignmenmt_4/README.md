@@ -1,2 +1,4 @@
-Create a layout where you have a single div in the center of the page with width 1200px. Hardcode its width to be 1200px. Hardcode its height to be 500px.
+Create a grid layout now that looks like this
 
+1x width 2x width ---------------------------|-------------------------------- | Left | | | text text text text | col 1 | col 2 | col 3 |
+| text text text text | col 1 | col 2 | col 3 | | text text text text | col 1 | col 2 | col 3 | | text text text text | | | | | ---------------------------|--------------------------------
