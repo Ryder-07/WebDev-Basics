@@ -18,3 +18,7 @@ setTimeoutPromisified(1000).then(function(){
 });
 
 console.log("outside the callback hell");
+
+
+let str1="asdsbsr";
+const sortedString = str1.split("s").sort().join("")
