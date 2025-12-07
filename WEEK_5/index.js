@@ -5,21 +5,22 @@ const app =express();
 
 let requestCount=0;
 
-function requestIncreaser(){
+function requestIncreaser(req,res,next){
     requestCount= requestCount+1;
     console.log("request count is "+ requestCount);
+    next();
 }
 
 
-app.get("/sum/:firstArg/:secondArg", function(req,res){
-    const a = parseInt(req.params.firstArg);
-    const b= parseInt(req.params.secondArg);
-    requestIncreaser();
+ function sumHandeller(req,res){
+    const a = parseInt(req.query.a);
+    const b= parseInt(req.query.b);
     res.json({
         answer: a+b
     })
-})
+}
 
+app.get("/sum/",requestIncreaser,sumHandeller);
 app.get("/subtract/:firstArg/:secondArg", function(req,res){
     const a = parseInt(req.params.firstArg);
     const b= parseInt(req.params.secondArg);
