@@ -7,7 +7,8 @@ let requestCount=0;
 
 function loggerMiddleware(req,res,next){
     console.log("method is "+ req.method);
-    console.log("url/host is "+ req.url);
+    console.log("Host is "+ req.hostname);
+    console.log("url is "+ req.url);
     console.log(new Date());
     next();
 }
