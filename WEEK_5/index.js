@@ -8,6 +8,9 @@ let requestCount=0;
 function requestIncreaser(req,res,next){
     requestCount= requestCount+1;
     console.log("request count is "+ requestCount);
+    res.json({
+        message: "I ended the request early"
+    })
     next();
 }
 
