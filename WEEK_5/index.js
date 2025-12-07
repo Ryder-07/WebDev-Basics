@@ -11,12 +11,33 @@ app.get("/sum/:firstArg/:secondArg", function(req,res){
     })
 })
 
-app.get("/multiply", function(req,res){
-    const a = parseInt(req.query.a);
-    const b= parseInt(req.query.b);
+app.get("/subtract/:firstArg/:secondArg", function(req,res){
+    const a = parseInt(req.params.firstArg);
+    const b= parseInt(req.params.secondArg);
+
+    res.json({
+        answer: a-b
+    })
+})
+
+
+app.get("/multiply/:firstArg/:secondArg", function(req,res){
+    const a = parseInt(req.params.firstArg);
+    const b= parseInt(req.params.secondArg);
 
     res.json({
         answer: a*b
+    })
+})
+
+
+
+app.get("/divide/:firstArg/:secondArg", function(req,res){
+    const a = parseInt(req.params.firstArg);
+    const b= parseInt(req.params.secondArg);
+
+    res.json({
+        answer: a/b
     })
 })
 
