@@ -58,5 +58,27 @@ app.post("/signin",function(req,res){
           console.log(users);
 })
 
+app.get("/me", function(req,res){
+     const token=req.headers.token;
+     let foundUser =null;
+
+     for(let i =0;i<users.length;i++){
+          if (users[i].token==token){
+     foundUser=users[i]
+          }
+     }if(foundUser){
+          const token = generateToken();
+          foundUser.token = token;
+          res.json({
+               message: token
+          })
+     } else{
+               res.status(403).send({
+                    message: " Invalid username or password"
+               })
+          }
+          console.log
+})
+
 
 app.listen(3000);
