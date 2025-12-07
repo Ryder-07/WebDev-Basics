@@ -2,10 +2,19 @@ const express = require("express");
 
 const app =express();
 
+
+let requestCount=0;
+
+function requestIncreaser(){
+    requestCount= requestCount+1;
+    console.log("request count is "+ requestCount);
+}
+
+
 app.get("/sum/:firstArg/:secondArg", function(req,res){
     const a = parseInt(req.params.firstArg);
     const b= parseInt(req.params.secondArg);
-
+    requestIncreaser();
     res.json({
         answer: a+b
     })
