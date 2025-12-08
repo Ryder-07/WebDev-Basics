@@ -1,6 +1,4 @@
 const express = require("express");
-const JWT_SECRET = "randomrudra";
-const JWT = require("jsonwebtoken");
 const app =express();
 
 
@@ -47,11 +45,7 @@ app.post("/signin",function(req,res){
      }
 
      if(foundUser){
-          const token = JWT.sign({
-            username: username
-          },JWT_SECRET);
-
-            
+          const token = generateToken();
           foundUser.token = token;
           res.json({
                message: token
