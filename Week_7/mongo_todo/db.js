@@ -5,18 +5,18 @@ const ObjectId = mongo.ObjectId;
 
 
 const Users= new schema({
-    email: {type: string, unique: true},
-    password: string,
-    name: string
+    email: String,
+    password: String,
+    name: String
 })
 
 const Todo = new schema({
-    title: string,
+    title: String,
     done: Boolean,
     userId: ObjectId
 })
 
-const UserModel = mongo.model('Users',user);
+const UserModel = mongo.model('Users',Users);
 const TodoModel= mongo.model('todos',Todo);
 
 
