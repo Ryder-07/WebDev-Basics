@@ -13,7 +13,10 @@ const Users= new schema({
 const Todo = new schema({
     title: String,
     done: Boolean,
-    userId: ObjectId
+    userId: {
+  type: mongo.Schema.Types.ObjectId,
+  ref: "Users"
+}
 })
 
 const UserModel = mongo.model('Users',Users);
