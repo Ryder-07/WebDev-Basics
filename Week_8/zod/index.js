@@ -27,11 +27,13 @@ app.post("/signup",async function(req,res){
         password: z.string().min(3). max(100)
     })
 
-    const parsedDataWithSuccess = requireBody.safeParse(req.body);
+    // const parseData= requireBody.parse(req.body);                              //this one does not gives us errors back 
+    const parsedDataWithSuccess = requireBody.safeParse(req.body);                // this one gives us errors back
 
     if (!parsedDataWithSuccess.success){
         res.json({
-            message: "Incorrect format"
+            message: "Incorrect format",
+            error: parsedDataWithSuccess.error
         })
         return
     }
