@@ -6,7 +6,7 @@ const bcrypt= require("bcrypt");
 require("dotenv").config();
 
 
-
+JWT_SECRET="SECRET";
 
 
 mongoose.connect(process.env.CONNECTION_STRING)
@@ -44,14 +44,22 @@ app.post("/signin",async function(req,res){
     const email= req.body.email;
     const password= req.body.password;
     
-    const user =await UserModel.findOne({
-        email:email,
-        password: password
-    })
-    console.log(user);
-    if (user){
+    const response =await UserModel.findOne({
+        email:email
+    });
+
+    if(!response){
+        res.status(403).json({
+            message:"User does not exist in our db"
+        })
+        return
+    }
+
+    const passwordMatch =await bcrypt.compare(password, response.password);
+    console.log(response);
+    if (passwordMatch){
         const  token =jwt.sign({
-            id:user._id.toString()
+            id:response._id.toString()
         },JWT_SECRET);
         res.json({
                 token:token
