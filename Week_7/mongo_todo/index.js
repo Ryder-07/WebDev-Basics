@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 
 const JWT_SECRET = "secret";
-mongoose.connect("mongo connect url here")
+mongoose.connect("mongodb+srv://pratapsinghr81:Kunalthebest%401@rudra.zfc5s.mongodb.net/todo-app-databse")
   .then(() => console.log("🔥 Mongo Connected Successfully"))
   .catch((e) => console.log("❌ Mongo Connection Error:", e));
 
@@ -72,7 +72,7 @@ app.post("/todo",auth, async function(req,res){
     })
 })
 
-app.get("/todos",async function(req,res){
+app.get("/todos",auth,async function(req,res){
     const userId=req.userId;
     const todos = await TodoModel.find({
         userId:userId

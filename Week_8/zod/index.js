@@ -3,13 +3,11 @@ const jwt = require("jsonwebtoken");
 const { UserModel, TodoModel } = require('./db');
 const mongoose = require("mongoose");
 const bcrypt= require("bcrypt");
-require("dotenv").config();
 
 
 
-
-
-mongoose.connect(process.env.CONNECTION_STRING)
+const JWT_SECRET = "secret";
+mongoose.connect("")
   .then(() => console.log("🔥 Mongo Connected Successfully"))
   .catch((e) => console.log("❌ Mongo Connection Error:", e));
 
@@ -31,7 +29,7 @@ app.post("/signup",async function(req,res){
     await UserModel.create({
             name: name,
             email: email,
-            password: hashedPassword 
+            password: hashedPassword   
 
         })
 
