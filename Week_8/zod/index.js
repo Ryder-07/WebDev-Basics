@@ -4,7 +4,7 @@ const { UserModel, TodoModel } = require('./db');
 const mongoose = require("mongoose");
 const bcrypt= require("bcrypt");
 require("dotenv").config();
-
+const {z} = require("zod");
 
 JWT_SECRET="SECRET";
 
@@ -21,15 +21,28 @@ app.use(express.json());
 
 
 app.post("/signup",async function(req,res){
+    const requireBody = z.object({
+        email: z.string().min(3). max(100).email(),
+        password: z.string().min(3). max(100),
+        password: z.string().min(3). max(100)
+    })
+
+    const parsedDataWithSuccess = requireBody.safeParse(req.body);
+
+    if (!parsedDataWithSuccess.success){
+        res.json({
+            message: "Incorrect format"
+        })
+        return
+    }
+
+
+
     const email= req.body.email;
     const password= req.body.password;
     const name= req.body.name;
 
-    if(typeof email !== "string" || email.length<=5 || !email.includes("@")){
-        res.json({
-            message: "email incorrect"
-        })
-    }
+    
 
 
 
