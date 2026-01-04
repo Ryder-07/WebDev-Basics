@@ -14,16 +14,12 @@ export default function App() {
 
 
   function addTodo(){
-    let newArray = [];
-    for( let i = 0 ; i< todos.length; i++){
-      newArray.push(todos[i]);
-    }
-    newArray.push ({
+    setTodos([...newArray,{
       title: document.getElementById("title").value,
       description: document.getElementById("description").value,
       done: true
-    });
-    setTodos(newArray);
+    }]);
+    console.log(todos);
   }
   return (
     <div>
