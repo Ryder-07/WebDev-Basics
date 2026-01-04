@@ -48,10 +48,14 @@ import './App.css'
 import { useEffect } from 'react'
 
 function App() {
+  let counterVisible = false;
 
+
+  //Conditional rendering
   return (
     <div>
-      <Counter></Counter>
+      {counterVisible ? <Counter></Counter> : null}
+      {counterVisible && <Counter></Counter>}
     </div>
    
   )
