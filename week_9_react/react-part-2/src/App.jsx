@@ -52,14 +52,14 @@ function App() {
 
 
   //Conditional rendering
-  return (
-    <div>
-      {counterVisible ? <Counter></Counter> : null}
-      {counterVisible && <Counter></Counter>}
-    </div>
+//   return (
+//     <div>
+//       {counterVisible ? <Counter></Counter> : null}
+//       {counterVisible && <Counter></Counter>}
+//     </div>
    
-  )
-}
+//   )
+// }
 
 function Counter(){
   const [count, setCount] = useState(0);
